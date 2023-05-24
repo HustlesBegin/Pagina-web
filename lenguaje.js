@@ -319,7 +319,7 @@ var DataStructures = {
                   strPrint = v;
               }
               // Print 
-              console.log(strPrint)
+              console.log(strPrint);
               break;
           case 'llegapue': v = eval(astNode.left); break; 
           case 'NUMBER': v = astNode.value; break;

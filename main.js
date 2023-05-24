@@ -12,11 +12,29 @@ document.getElementById("CompilarButton").addEventListener("click", function() {
   });
 
 document.getElementById('EjecutarButton').addEventListener("Click", function() {
+  
+  function resetForRun() {
+    functions = {
+      // Pre-create the main function
+      '#main#' : new AstNode('function', {name : '#main#'})
+    };
+  }
+  
+  // The whole program tree
+  var finalprogram;
+  // Function map
+  var functions = {
+    // Pre-create the main function
+    '#main#' : new AstNode('function', {name : '#main#'})
+  };
+  // Execution stack
+  var executionstack = new DataStructures.stack();
+  executionstack.push({});
+
     const ejecutarCodigo = require('./lenguaje.js')
     let output = ejecutarCodigo.parse(document.body);
     console.log(output);
-    var iframe = document.getElementById('Editor');
-    iframe.srcdoc = output;
+    document.getElementById('Editor').value = output;
 });
 
 // Configuración de i18next
