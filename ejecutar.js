@@ -1,21 +1,3 @@
-function resetForRun() {
-    functions = {
-      // Pre-create the main function
-      '#main#' : new AstNode('function', {name : '#main#'})
-    };
-  }
-  
-  // The whole program tree
-  var finalprogram;
-  // Function map
-  var functions = {
-    // Pre-create the main function
-    '#main#' : new AstNode('function', {name : '#main#'})
-  };
-  // Execution stack
-  var executionstack = new DataStructures.stack();
-  executionstack.push({});
-
 const lenguaje = require('./lenguaje.js');
 
 const sourceCode = `
@@ -27,5 +9,5 @@ const sourceCode = `
     saludar("Juan");
 `;
 
-let output = lenguaje.parse(sourceCode);
+let output = lenguaje.parse('dimelo "Hola";');
 console.log(output);
