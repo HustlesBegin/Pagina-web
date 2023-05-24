@@ -1,14 +1,23 @@
 
 document.getElementById("CompilarButton").addEventListener("click", function() {
+
     var messageElement = document.createElement("div");
     messageElement.innerHTML = "Compilando...";
     messageElement.classList.add("Mensaje");
     document.body.appendChild(messageElement);
-  
+
     setTimeout(function() {
       document.body.removeChild(messageElement);
     }, 3000); // Elimina el mensaje después de 3 segundos (3000 ms)
   });
+
+document.getElementById('EjecutarButton').addEventListener("Click", function() {
+    const ejecutarCodigo = require('./lenguaje.js')
+    let output = ejecutarCodigo.parse(document.body);
+    console.log(output);
+    var iframe = document.getElementById('Editor');
+    iframe.srcdoc = output;
+});
 
 // Configuración de i18next
 i18next.init({
@@ -81,7 +90,7 @@ i18next.init({
       document.getElementById('EjecutarButton').textContent = t('execute');
       document.getElementById('SpanishButton').textContent = t('spanish');
       document.getElementById('EnglishButton').textContent = t('english');
-      document.getElementById('FrenchButton').textContent = t('french');    
+      document.getElementById('FrenchButton').textContent = t('french');
       document.getElementById('TextoIngresado').setAttribute('placeholder', t('placeholder'));
     }
   });
